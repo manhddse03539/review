@@ -25,8 +25,14 @@
         }
         var addBtn = document.getElementById('add-btn');
         addBtn.addEventListener('click', addItem);
-        function addItem() {
-            var input = document.getElementById('new-item');
+        var input = document.getElementById('new-item');
+        // session storage 
+        input.value = sessionStorage.getItem('draft'); // get, giữ giá trị vừa nhập vào seesionStorage
+        input.addEventListener('change', updateSessionStorage); // update giá trị vừa nhập sessionStorage
+        function updateSessionStorage() {
+            sessionStorage.setItem('draft', input.value);
+        }
+        function addItem() {       
             var newItem = input.value;
             todolist.push(newItem);
             render();
