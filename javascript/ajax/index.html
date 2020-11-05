@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Todolist</title>
+</head>
+<body>
+    <input id="new-item" type="text">
+    <button id="add-btn">Add</button>
+    <ul id="todo-list">
+        <!-- item here -->
+    </ul>
+    <script>
+        // server chứa dữ liệu database
+        var url = 'http://localhost:9081/todos';
+        // axios request lên server lấy dữ liệuliệu và response data về client
+        var items;
+        axios.get(url).then(function(response){
+            items = response.data;
+            render(items);
+        });
+        function render(items) {
+            var htmlList = document.getElementById('todo-list');
+            var content = items.map(function(item){
+                return '<li>' + item.content + '</li>';
+            });
+            htmlList.innerHTML = content.join('');
+        }
+    </script>
+</body>
+</html>

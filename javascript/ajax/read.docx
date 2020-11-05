@@ -1,0 +1,4 @@
+Cài đặt server-json : 
+step 1 : cài đặt json-server để chay db : npm install -g json-server 
+step 2 : tạo port (tên : 9081) : json-server --watch db.json --port 9081
+Sử dụng axios : 1 http client viết dựa trên promise hỗ trợ xây dựng ứng dụng API. Để lấy dữ liệu db
