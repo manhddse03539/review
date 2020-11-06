@@ -13,3 +13,6 @@ Link : https://firebase.google.com/docs/hosting
 7. Deploy on server public
     firebase deploy
 8. Done -> you have a hosting url
+
+9. Firebase init by project ID
+    firebase -P <projectId> init

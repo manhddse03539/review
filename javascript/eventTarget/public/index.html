@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todolist</title>
+</head>
+<body>
+    <input id="new-item" type="text">
+    <button id="add-btn">Add</button>
+    <ul id="todo-list">
+        <!-- item here -->
+    </ul>
+    <script>
+        var storageKey = 'todolist';
+        var dataString = localStorage.getItem(storageKey);
+        var todolist;
+        var htmlList = document.getElementById('todo-list');
+        var input = document.getElementById('new-item');
+        var addBtn = document.getElementById('add-btn');
+        addBtn.addEventListener('click', addItem);
+        if (dataString) {
+            todolist = JSON.parse(dataString);
+        } else {
+            todolist = [];
+        }
+        // handle event's target
+        htmlList.addEventListener('click', onListClicked)
+        function onListClicked(event) {
+          // get button target event
+          var button = event.target;
+          // get index of button target
+          var index = button.dataset.id;
+          // delete 1 element by index in todolist
+          todolist.splice(index, 1);
+          // re-render todolist
+          render();
+          // re-set todolist in localstorage
+          localStorage.setItem(storageKey, JSON.stringify(todolist));
+        }
+        function addItem() {       
+            var newItem = input.value;
+            todolist.push(newItem);
+            render();
+            input.value = '';
+            localStorage.setItem(storageKey, JSON.stringify(todolist));
+        }
+        function render() {
+            var content = todolist.map(function(item, index){
+                return `<li>${item}<button data-id="${index}"> Delete</button></li>`;
+            });
+            htmlList.innerHTML = content.join('');
+        }
+        render();
+    </script>
+</body>
+</html>
