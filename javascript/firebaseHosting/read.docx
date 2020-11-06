@@ -1,0 +1,15 @@
+Guide Firebase hosting 
+Link : https://firebase.google.com/docs/hosting
+1. Install firebase in command line
+    curl -sL https://firebase.tools | bash
+2. Create accout on https://firebase.google.com/ and create a project
+3. Login
+    firebase login
+4. Go to directory this you want to do project cd [project_file]
+5. Connect the directory to your Firebase project
+    firebase init
+6. Test run local server before 
+    firebase serve
+7. Deploy on server public
+    firebase deploy
+8. Done -> you have a hosting url
