@@ -1,0 +1,15 @@
+1. Readlinesync
+- Install https://www.npmjs.com/package/readline-sync
+    npm install readline-sync
+- Require to use module
+    var readlineSync = require('readline-sync');
+- To enter your input 
+    var variableName = readlineSync.question('Input something here: ');
+2. Read file and write file
+- Have must require fs to read file
+    var fs = require('fs');
+- Read file content and push in object
+    var fileContent = fs.readFileSync('src's file');
+    object = JSON.parse(fileContent);
+- Write file
+    fs.writeFileSync('src's file', data{});
