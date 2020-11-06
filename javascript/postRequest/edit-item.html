@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Edit item</title>
+</head>
+<body>
+    <input id="edit-item" type="text">
+    <button id="save-btn">Save</button>
+    <a href="/">Back</a>
+    <script>
+    var url = 'http://localhost:9081/todos';
+    var input = document.getElementById('edit-item');
+    var saveBtn = document.getElementById('save-btn');
+    // Get index item after # by substr
+    var indexItem = location.hash.substr(1);
+     // axios request lên server lấy dữ liệu và response data về client
+    axios.get(url).then(function(response){
+        var items = response.data;
+        items.forEach(function(item){
+            // Get item name to input
+            if(indexItem == item.id) {
+                input.value = item.content;
+            }
+        });
+    });
+    saveBtn.addEventListener('click', editItem);
+    // edit item form db server by id
+    function editItem() {
+        axios.put(`${url}/${indexItem}`, {content : input.value});
+        window.location.href = '/'; 
+    }
+    </script>
+</body>
+</html>

@@ -7,8 +7,7 @@
     <title>Todolist</title>
 </head>
 <body>
-    <input id="new-item" type="text">
-    <button id="add-btn">Add</button>
+    <a href="new-item.html">add new item</a>
     <ul id="todo-list">
         <!-- item here -->
     </ul>
@@ -21,24 +20,19 @@
             items = response.data;
             render(items);
         });
-        var addBtn = document.getElementById('add-btn');
-        addBtn.addEventListener('click', addItem);
-        var input = document.getElementById('new-item');
-        function addItem() {       
-            var newItem = {
-                content : input.value
-            };
-            axios.post(url, newItem);
-            axios.get(url).then(function(response){
-                items = response.data;
-                render(items);
-            });
-            input.value = '';
+        var htmlList = document.getElementById('todo-list');
+        // handle event's target to change edit item page
+        htmlList.addEventListener('click', onEditItemSheet);
+        function onEditItemSheet(event) {
+            // get index of clicked button
+            var editButton = event.target;
+            var index = parseInt(editButton.dataset.id) + 1;
+            // transfer to edit item sheet
+            window.location.href = `edit-item.html#${index}`;
         }
         function render(items) {
-            var htmlList = document.getElementById('todo-list');
-            var content = items.map(function(item){
-                return '<li>' + item.content + '</li>';
+            var content = items.map(function(item,index){
+                return `<li>${item.content} <button data-id="${index}"> Edit</button></li>`;
             });
             htmlList.innerHTML = content.join('');
         }
