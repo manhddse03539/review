@@ -1,1 +1,5 @@
 Post request guide
+1. Post data from client to db server
+    axios.post([url of db server], object)
+2. Put(edit) data from client to db server
+    axios.put([url of db server]/objdecID, editedData of object)

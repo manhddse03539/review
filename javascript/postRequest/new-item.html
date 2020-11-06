@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <title>Add new item</title>
+</head>
+<body>
+    <input id="new-item" type="text">
+    <button id="add-btn">Add</button>
+    <a href="/">Back</a>
+    <script>
+        var input = document.getElementById('new-item');
+        var addBtn = document.getElementById('add-btn');
+        var url = 'http://localhost:9081/todos';
+        addBtn.addEventListener('click', addItem);
+        function addItem() {       
+            var newItem = {
+                content : input.value
+            };
+            axios.post(url, newItem);
+            window.location.href = "/";
+        }
+    </script>
+</body>
+</html>
