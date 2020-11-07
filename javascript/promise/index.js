@@ -12,15 +12,14 @@ function readFilePromise(path) {
         });
     });
 }
-// read file 1
-readFilePromise('file1.txt')
-    .then(function(file1){  // then run a callback function to log file 1 and read file 2
-        console.log(file1);
-        return readFilePromise('file2.txt')
-    })
-    .then(function(file2){ // then run a callback function to log file 2 ...
-        console.log(file2);
-    })
-    .catch(function(err){ //  catch if have any error
-        console.log(err);
-    });
+
+Promise.all([ // read all file and then log data in files
+    readFilePromise('./file1.txt'),
+    readFilePromise('./file2.txt')
+]).then(function(values){
+    for(value of values) {
+        console.log(value);
+    }
+}).catch(function(err){
+    console.log(err);
+});
