@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" type="text/css" href="style.css">
+	<title>Document</title>
+</head>
+<body>
+	<div id="wrap">
+		<h1>GIA CAT DANG SHOP</h1>
+		<ul id="option">
+			<li class="option active" onclick="changeOption('newBlock', this)" id="new">NEW</li>
+			<li class="option" onclick="changeOption('hotBlock', this)" id="hot">HOT</li>
+			<li class="option" onclick="changeOption('saleBlock', this)" id="sale">SALE</li>
+		</ul>
+		<ul class="block" id="newBlock">
+			<li><img src="imgs/shoe1.jpg"/></li>
+			<li><img src="imgs/shoe2.jpg"/></li>
+			<li><img src="imgs/shoe3.jpg"/></li>
+			<li><img src="imgs/shoe4.jpg"/></li>
+			<li><img src="imgs/shoe5.jpg"/></li>
+			<li><img src="imgs/shoe6.jpg"/></li>
+		</ul>
+
+		<ul class="block" id="hotBlock">
+			<li><img src="imgs/shoe3.jpg"/></li>
+			<li><img src="imgs/shoe5.jpg"/></li>
+			<li><img src="imgs/shoe6.jpg"/></li>
+			<li><img src="imgs/shoe4.jpg"/></li>
+			<li><img src="imgs/shoe2.jpg"/></li>
+			<li><img src="imgs/shoe1.jpg"/></li>
+		</ul>
+
+		<ul class="block" id="saleBlock">
+			<li><img src="imgs/shoe6.jpg"/></li>
+			<li><img src="imgs/shoe3.jpg"/></li>
+			<li><img src="imgs/shoe1.jpg"/></li>
+			<li><img src="imgs/shoe2.jpg"/></li>
+			<li><img src="imgs/shoe5.jpg"/></li>
+			<li><img src="imgs/shoe4.jpg"/></li>
+		</ul>	
+	</div>
+	
+	<script src="show.js"></script>
+</body>
+</html>

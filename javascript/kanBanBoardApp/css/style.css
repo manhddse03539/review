@@ -1,0 +1,39 @@
+nav.title {
+	justify-content:center;
+	background-color: #8ed1fc;
+}
+nav.title a {
+	color: white;
+}
+.board {
+	margin-top: 50px;
+}
+.card-header {
+	color : white;
+}
+.card-body {
+	cursor: pointer;
+}
+.card-body:hover {
+	background-color: #D7D7D7;
+}
+.board .todo {
+	background-color: #e91e63;
+}
+.board .doing {
+	background-color: #ffc107;
+}
+.board .done {
+	background-color: #4caf50;
+}
+.board .newJob {
+	border: none;
+}
+.fa-trash {
+	display: block;
+    float: right;
+    visibility: hidden;
+}
+.card-body:hover .fa-trash {
+	visibility: visible;
+}
