@@ -1,0 +1,33 @@
+1. git log : log ra những history commit : người tạo, thời gian tạo, tên commit 
+2. git show [commit ID] : show ra thông tin chi tiết về commit đó
+3. git diff :  để show ra những nội dung thay đổi của những file đã modifiedmodified 
+4. git checkout --[file name] :  bỏ đi những thay đổi của file
+5. git reset HEAD [filename] : bỏ add file lên staging
+6. git merge B (đang ở nhánh A) : merge B vào A
+7. git reset --soft [commit ID]: quay trở lại commit và đưa các file đã commit về staging
+8. git reset --mixed [commit ID]: quay trở lại commit và đưa các file đã commit về trước khi add
+9. git reset --hard [commit ID]: mất hẳn commit và đưa các file đã thay đổi về trạng thái chưa thay đổi gì (lưu ý khi sử dụng)
+10. git branch -D [feature branch] : xoá branch
+11. Resolve conflict bằng rebase : 
+    + Nguyên nhân :
+        B1 :Cho : master-nhánh chính, A-sửa file common, B-sửa file common
+        B2 : master merge nhánh A sau khi A pull request 
+        B3 : master merge nhánh B sau khi B pull request
+        -> xảy ra conflict
+
+    + Xử lý : 
+        B1 : checkout đến master, pull mới nhất
+        B2 : checkout đến nhánh B or A để rebase master : git rebase master
+        B3 : sửa code bị conflict
+        B4 : git add.
+        B5 : git rebase --continue
+        B6 : git push origin [nhánh A or B] -f
+        -> Done
+12. Chỉnh sửa commit : 
+        B1 : git rebase -i HEAD~~
+        B2 : Chọn commit muốn chỉnh sửa và tác vụ chỉnh sửa
+        B3 : rebase --continue
+        B4 : git push origin [nhánh] -f
+13. Merge code bằng rebase or merge
+    - Rebase : các commit của rebase sẽ nằm trên commit mới nhất của master -> nó sẽ log ra 1 hệ thống dễ nhìn, dễ tracking
+    - Merge : commit của master sẽ nằm trên commit mới nhất của merge 
